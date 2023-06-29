@@ -1,20 +1,25 @@
-<script>
-  window.addEventListener('DOMContentLoaded', function () {
-    // Get the username from the query parameters
-    const params = new URLSearchParams(window.location.search);
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DuelCube</title>
+</head>
+<body>
+  <script src= "https://player.twitch.tv/js/embed/v1.js"></script>
+<div id="SamplePlayerDivID"></div>
+<script type="text/javascript">
+  const params = new URLSearchParams(window.location.search);
     const username = params.get('username');
-
-    // Replace the channel name with the username in the iframe source
-    const iframe = document.querySelector('iframe');
-    const src = iframe.getAttribute('src');
-    const updatedSrc = src.replace('channel=itsgogottv', 'channel=' + username);
-    iframe.setAttribute('src', updatedSrc);
-
-  });
+  var options = {
+    width: 854,
+    height: 480,
+    channel: username ? username : "itsgogottv",
+    // Only needed if this page is going to be embedded on other websites
+    parent: ["kalpacodescale.github.io", "othersite.example.com"]
+  };
+  var player = new Twitch.Player("SamplePlayerDivID", options);
+  player.setVolume(0.5);
 </script>
-
-<iframe
-  src="https://player.twitch.tv/?channel=itsgogottv&parent=kalpacodescale.github.io"
-  allowfullscreen
-   height="100%"
-></iframe>
+</body>
+</html>
