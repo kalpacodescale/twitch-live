@@ -1,7 +1,20 @@
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    // Get the username from the query parameters
+    const params = new URLSearchParams(window.location.search);
+    const username = params.get('username');
+
+    // Replace the channel name with the username in the iframe source
+    const iframe = document.querySelector('iframe');
+    const src = iframe.getAttribute('src');
+    const updatedSrc = src.replace('channel=itsgogottv', 'channel=' + username);
+    iframe.setAttribute('src', updatedSrc);
+
+  });
+</script>
+
 <iframe
   src="https://player.twitch.tv/?channel=itsgogottv&parent=kalpacodescale.github.io"
-  height="500"
-  width="500"
   allowfullscreen
->
-</iframe>
+   height="100%"
+></iframe>
